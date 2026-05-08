@@ -9,13 +9,11 @@
 :root{
   --bg:#f3f4f6; --card:#fff; --top:#e8eaee;
   --text:#17233b; --muted:#5b6474;
-
   --green:#cfe6cf; --green-b:#8bc58f;
   --yellow:#efe6b3; --yellow-b:#d7be49;
   --orange:#f1d0ae; --orange-b:#e2a45f;
   --blue:#cfe0f3; --blue-b:#7ea6d6;
-
-  --radius:16px; --shadow:0 2px 8px rgba(0,0,0,.08);
+  --shadow:0 2px 8px rgba(0,0,0,.08);
   --gap:8px;
 }
 
@@ -37,16 +35,23 @@ body{padding:12px;}
 }
 
 .control-btn{
-  border:none;border-radius:16px;background:var(--top);
-  font-size:13px;font-weight:700;height:50px;
+  border:none;
+  border-radius:16px;
+  background:var(--top);
+  font-size:13px;
+  font-weight:700;
+  height:50px;
   box-shadow:var(--shadow);
   color:var(--text);
 }
 
 .status-card{
-  background:var(--card);border-radius:18px;
-  box-shadow:var(--shadow);padding:12px 16px;
+  background:var(--card);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:12px 16px;
 }
+
 .status-title{font-weight:800;font-size:14px;margin-bottom:4px;}
 .status-time{font-size:12px;color:var(--muted);}
 
@@ -65,9 +70,12 @@ body{padding:12px;}
 .event-btn{
   border:2px solid transparent;
   border-radius:18px;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  text-align:center;padding:6px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:6px;
   box-shadow:var(--shadow);
   color:var(--text);
 }
@@ -79,6 +87,26 @@ body{padding:12px;}
 .yellow{background:var(--yellow);border-color:var(--yellow-b);}
 .orange{background:var(--orange);border-color:var(--orange-b);}
 .blue{background:var(--blue);border-color:var(--blue-b);}
+
+.split-blue{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  height:100%;
+}
+
+.split-btn{
+  height:100%;
+  padding:4px;
+}
+
+.split-btn .code{
+  font-size:16px;
+}
+
+.split-btn .desc{
+  font-size:8px;
+}
 
 .g1{grid-area:g1;} .g2{grid-area:g2;}
 .y1{grid-area:y1;} .y2{grid-area:y2;}
@@ -120,6 +148,7 @@ body{padding:12px;}
 </head>
 
 <body>
+
 <div class="app">
 
   <div class="controls">
@@ -138,56 +167,71 @@ body{padding:12px;}
 
   <div class="behavior-grid">
 
-    <!-- GREEN -->
     <button class="event-btn green g1" onclick="log('SL','Slowing down')">
-      <div class="code">SL</div><div class="desc">Slowing down</div>
+      <div class="code">SL</div>
+      <div class="desc">Slowing down</div>
     </button>
 
     <button class="event-btn green g2" onclick="log('SS','Short scanning')">
-      <div class="code">SS</div><div class="desc">Short scanning</div>
+      <div class="code">SS</div>
+      <div class="desc">Short scanning</div>
     </button>
 
-    <!-- YELLOW -->
     <button class="event-btn yellow y1" onclick="log('RS','Repeated scanning')">
-      <div class="code">RS</div><div class="desc">Repeated scanning</div>
+      <div class="code">RS</div>
+      <div class="desc">Repeated scanning</div>
     </button>
 
     <button class="event-btn yellow y2" onclick="log('ST','Stop')">
-      <div class="code">ST</div><div class="desc">Stop</div>
+      <div class="code">ST</div>
+      <div class="desc">Stop</div>
     </button>
 
-    <!-- ORANGE -->
     <button class="event-btn orange o1" onclick="log('WD','Wrong direction')">
-      <div class="code">WD</div><div class="desc">Wrong direction</div>
+      <div class="code">WD</div>
+      <div class="desc">Wrong direction</div>
     </button>
 
-    <button class="event-btn orange o2" onclick="log('RC','Route Correction')">
-      <div class="code">RC</div><div class="desc">Route correction</div>
+    <button class="event-btn orange o2" onclick="log('RW','Resume walking')">
+      <div class="code">RW</div>
+      <div class="desc">Resume walking</div>
     </button>
 
     <button class="event-btn orange o3" onclick="log('AC','Acceleration')">
-      <div class="code">AC</div><div class="desc">Acceleration</div>
+      <div class="code">AC</div>
+      <div class="desc">Acceleration</div>
     </button>
 
-    <!-- BLUE -->
-    <button class="event-btn blue o4" onclick="log('CS','Compass shifting')">
-      <div class="code">CS</div><div class="desc">Compass shifting</div>
-    </button>
+    <div class="split-blue o4">
+      <button class="event-btn blue split-btn" onclick="log('CS','Compass shifting')">
+        <div class="code">CS</div>
+        <div class="desc">Compass shifting</div>
+      </button>
+
+      <button class="event-btn blue split-btn" onclick="log('NL','Not looking at the compass')">
+        <div class="code">NL</div>
+        <div class="desc">Not looking at compass</div>
+      </button>
+    </div>
 
     <button class="event-btn blue b1" onclick="log('DC','Decision')">
-      <div class="code">DC</div><div class="desc">Decision</div>
+      <div class="code">DC</div>
+      <div class="desc">Decision</div>
     </button>
 
-    <button class="event-btn blue b2" onclick="log('NR','No reaction')">
-      <div class="code">NR</div><div class="desc">No reaction</div>
+    <button class="event-btn blue b2" onclick="log('CR','Correct response')">
+      <div class="code">CR</div>
+      <div class="desc">Correct response</div>
     </button>
 
-    <button class="event-btn blue b3" onclick="log('CR','Rorrect response')">
-      <div class="code">CR</div><div class="desc">Correct response</div>
+    <button class="event-btn blue b3" onclick="log('IR','Inorrect response')">
+      <div class="code">IR</div>
+      <div class="desc">Inorrect response</div>
     </button>
 
     <button class="event-btn blue b4" onclick="log('IV','Intervention')">
-      <div class="code">IV</div><div class="desc">Intervention</div>
+      <div class="code">IV</div>
+      <div class="desc">Intervention</div>
     </button>
 
   </div>
@@ -221,6 +265,7 @@ function getElapsed(){
 
 function ensureTimer(){
   if (timerInterval) return;
+
   timerInterval = setInterval(() => {
     document.getElementById("time").innerText = format(getElapsed());
 
@@ -246,7 +291,7 @@ function start(){
 function pause(){
   if (startTime === 0) return;
 
-  if (running) {
+  if (running){
     pausedElapsed = Date.now() - startTime;
     running = false;
   } else {
@@ -275,16 +320,17 @@ function note(){
   if (t) log("NOTE", t);
 }
 
-function log(code, label){
+function log(code,label){
   if (!running) return;
   let t = getElapsed();
-  logs.push({ t, code, label });
+  logs.push({t,code,label});
   render();
 }
 
 function render(){
   let el = document.getElementById("log");
   el.innerHTML = "";
+
   logs.slice().reverse().forEach(l => {
     let d = document.createElement("div");
     d.className = "log-entry";
@@ -295,10 +341,12 @@ function render(){
 
 function download(){
   let csv = "time,code,label\n";
+
   logs.forEach(l => {
     const safeLabel = String(l.label).replace(/"/g, '""');
     csv += `${format(l.t)},${l.code},"${safeLabel}"\n`;
   });
+
   let blob = new Blob([csv], { type: "text/csv" });
   let a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
@@ -308,26 +356,26 @@ function download(){
 }
 
 function confirmStart(){
-  const ok = confirm("Start a new session? This will clear the current log.");
+  const ok = confirm("Start a new session? This clears the current log.");
   if (ok) start();
 }
 
 function confirmPause(){
-  if (startTime === 0) {
+  if (startTime === 0){
     alert("Start a session first.");
     return;
   }
 
   const message = running
-    ? "Pause the current session?"
-    : "Resume the current session?";
+    ? "Pause current session?"
+    : "Resume current session?";
 
   const ok = confirm(message);
   if (ok) pause();
 }
 
 function confirmReset(){
-  const ok = confirm("Reset the session and clear all logs?");
+  const ok = confirm("Reset session and clear all logs?");
   if (ok) reset();
 }
 
